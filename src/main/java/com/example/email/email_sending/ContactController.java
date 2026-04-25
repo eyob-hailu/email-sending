@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/api")
 public class ContactController {
 
     private final EmailService emailService;
@@ -14,7 +14,12 @@ public class ContactController {
         this.emailService = emailService;
     }
 
-    @PostMapping
+    @GetMapping("/health")
+    public ResponseEntity<?> contact() {
+        return ResponseEntity.ok("OK");
+    }
+
+    @PostMapping("/contact")
     public ResponseEntity<String> contact(@RequestBody ContactRequest request) {
 
         String htmlContent = """
