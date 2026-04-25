@@ -15,9 +15,9 @@ public class ContactController {
     }
 
     @GetMapping("/health")
-    public ResponseEntity<?> appHealth() {
-        System.err.println("");
-        return ResponseEntity.ok("OK");
+    public ResponseEntity<String> appHealth() {
+        System.err.println("heath checked");
+        return ResponseEntity.ok("Online");
     }
 
     @PostMapping("/contact")
