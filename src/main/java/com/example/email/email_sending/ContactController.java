@@ -15,7 +15,8 @@ public class ContactController {
     }
 
     @GetMapping("/health")
-    public ResponseEntity<?> contact() {
+    public ResponseEntity<?> appHealth() {
+        System.err.println("");
         return ResponseEntity.ok("OK");
     }
 
@@ -29,17 +30,16 @@ public class ContactController {
                 <p><strong>Message:</strong></p>
                 <p>%s</p>
                 """.formatted(
-                        request.getName(),
-                        request.getEmail(),
-                        request.getMessage()
-                );
+                request.getName(),
+                request.getEmail(),
+                request.getMessage());
 
         emailService.sendEmail(
-                "onboarding@resend.dev",       // your verified Resend sender
-                "eyobajobi@gmail.com",         // your receiving email
+                "onboarding@resend.dev", // your verified Resend sender
+                "eyobajobi@gmail.com", // your receiving email
                 "New Contact Form Submission",
                 htmlContent,
-                request.getEmail()             // <-- user email as reply_to
+                request.getEmail() // <-- user email as reply_to
         );
 
         return ResponseEntity.ok("Message sent successfully!");
